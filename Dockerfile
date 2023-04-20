@@ -1,3 +1,5 @@
-FROM httpd:latest
-COPY . .
-EXPOSE 8080
+FROM nginx:alpine
+
+WORKDIR app
+
+COPY /app /usr/share/nginx/html
