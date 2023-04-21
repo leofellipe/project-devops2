@@ -45,5 +45,5 @@ jobs:
           docker pull $DOCKERHUB_USER/projeto-devops2:latest
       - name: dokcer run
         run: |
-          docker run --name mycontainer -p 3000:3000 $DOCKERHUB_USER/projeto-devops2:latest
+          docker run -d -p 3000:3000 $DOCKERHUB_USER/projeto-devops2:latest
       - run: echo "Finalizado!"
