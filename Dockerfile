@@ -1,5 +1,5 @@
 FROM nginx:alpine
 
-WORKDIR app
+WORKDIR /app
 
 COPY /app /usr/share/nginx/html
