@@ -43,7 +43,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: usuariodocker/repositorio:tag
 
       - name: Deploy
         run: echo "Deploy ok"
