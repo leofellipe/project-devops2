@@ -9,41 +9,30 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: docker login
-        env: 
-          DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-        run: |
-          docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
-      
-      - name: docker build
-        run: |
-          docker build . -t leofellipe/projeto-devops2:latest
-      
-      - name: docker push
-        run: |
-          docker push leofellipe/projeto-devops2:latest
-  test:
-      runs-on: ubuntu-latest
-      steps:
       - uses: actions/checkout@v3
-      - run: nodejs index.js
-
+      - run: python3 -V
+      - name: Build
+        run: echo "Build ok"
+    
   deploy-job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: docker pull
-        env: 
-          DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-        run: |
-          docker pull $DOCKERHUB_USER/projeto-devops2:latest
-      - name: dokcer run
-        run: |
-          docker run -d -p 3000:3000 $DOCKERHUB_USER/projeto-devops2:latest
-      - run: echo "Finalizado!"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets. $DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: leofellipe/projeto-devops2:tag
+
+      - name: Deploy
+        run: echo "Deploy ok"
