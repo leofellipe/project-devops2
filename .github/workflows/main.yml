@@ -11,9 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: nodejs -V
       - name: Build
         run: echo "Build ok"
+        
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: AppThreat/sast-scan-action@master
+        with:
+           type: "nodejs"
     
   deploy-job:
     runs-on: ubuntu-latest
