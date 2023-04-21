@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "name": "project-devops2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leofellipe/project-devops2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leofellipe/project-devops2/issues"
+  },
+  "homepage": "https://github.com/leofellipe/project-devops2#readme",
+  "description": ""
+}
