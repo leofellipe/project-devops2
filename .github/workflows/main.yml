@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: python3 -V
+      - run: nodejs -V
       - name: Build
         run: echo "Build ok"
     
